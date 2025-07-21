@@ -4,6 +4,7 @@ from aiogram.enums import ParseMode
 from aiogram.fsm.storage.base import DefaultKeyBuilder
 from aiogram.fsm.storage.redis import RedisStorage
 
+from bot.handlers import router
 from config import settings
 
 bot = Bot(
@@ -22,3 +23,5 @@ dp = Dispatcher(
         ),
     ),
 )
+
+dp.include_router(router)
