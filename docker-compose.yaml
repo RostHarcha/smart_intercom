@@ -6,6 +6,11 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  redis:
+    image: redis:7.2-alpine
+    volumes:
+    - redis_data:/data
+
   smart-intercom:
     image: smart-intercom
     ports:
@@ -17,8 +22,9 @@ services:
       - ./.env
     volumes:
       - ./src:/src
-      - ./alembic.ini:/src/alembic.ini
+      - ./alembic.ini:/alembic.ini
     command: [ "python", "-m", "fastapi", "run", 'main.py' ]
 
 volumes:
   postgres_data:
+  redis_data:
