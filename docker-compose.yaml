@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:14-alpine3.17
+    env_file:
+      - ./.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  smart-intercom:
+    image: smart-intercom
+    ports:
+      - "8103:8000"
+    build: .
+    depends_on:
+      - postgres
+    env_file:
+      - ./.env
+    volumes:
+      - ./src:/src
+      - ./alembic.ini:/src/alembic.ini
+    command: [ "python", "-m", "fastapi", "run", 'main.py' ]
+
+volumes:
+  postgres_data:

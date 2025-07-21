@@ -1,0 +1,80 @@
+target-version = "py310"
+line-length = 75
+
+[lint]
+select = [
+    "F", # pyflakes
+    "E", # pycodestyle
+    "W", # pycodestyle
+    "UP", # pyupgrade
+    "YTT", # flake8-2020
+    "S", # flake8-bandit
+    "BLE", # flake8-blind-except
+    "B", # flake8-bugbear
+    "A001", # flake8-builtins
+    "C4", # flake8-comprehensions
+    "DTZ", # flake8-datetimez
+    "T10", # flake8-debugger
+    "ISC", # flake8-implicit-str-concat
+    "G", # flake8-logging-format
+    "INP", # flake8-no-pep420
+    "PIE", # flake8-pie
+    "T20", # flake8-print
+    "PT", # flake8-pytest-style
+    "RET501", # flake8-return
+    "RET502", # flake8-return
+    "SIM", # flake8-simplify
+    "PTH", # flake8-use-pathlib
+    "PGH", # pygrep-hooks
+    "PLC", # pylint
+    "PLE", # pylint
+    "RUF", # ruff-specific
+    "C90", # mccabe
+    "N", # pep8-naming
+    "UP", # pyupgrade
+    "S", # bandit
+    "BLE", # flake8-blind-except
+    "B", # bugbear
+    "C4", # comprehensions
+    "DTZ", # datetimez
+    "EM", # error-messages
+    "FA", # future-annotations
+    "ISC", # implicit string concat
+    "PIE", # flake8-pie
+    "PT", # flake8-pytest-style
+    "SLF", # flake8-self
+    "SIM", # flake8-simplify
+    "ARG", # flake8-unused-argument
+    "ERA", # eradicate commented out code
+    "TRY", # tryceratops
+]
+fixable = [
+    "F401", # unused imports
+]
+ignore = [
+    "RUF001", # Checks for ambiguous Unicode characters in strings
+    "RUF002", # Checks for ambiguous Unicode characters in docstrings
+    "RUF003", # Checks for ambiguous Unicode characters in comments.
+	"RUF012", # Class meta fields in Django 
+	"S311",
+	#-----
+    "E501", # 'black' handles line length
+    "F405", # defined from star import
+    "S101", # impossible logic branches are denoted with 'assert'
+    "S104", # bind to all interfaces is OK in Docker
+    "S105",
+    "S106",
+    "B008", # function call (e.g. `Depends`) in argument defaults
+    "PT004", # fixtures that don't return a value must start with an underscore
+    "SIM108", # use ternary operator ... instead of if-else-block
+]
+
+[format]
+quote-style = "single"
+indent-style = "space"
+docstring-code-format = true
+
+
+[lint.extend-per-file-ignores]
+"migrations/**.py" = ["E501"]   # line length
+"tests/**.py" = ["S101"]  # use of `assert`
